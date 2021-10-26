@@ -1,0 +1,70 @@
+﻿@model CurrencyConverter.Models.Conversion.ConvertCurrencyModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4 mb-4">Welcome to the Currency Conversion App</h1>
+</div>
+<div></div>
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Index" method="post">
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Convert:</span>
+                        </div>
+                        <input type="number" min="0" step="0.01" class="form-control" asp-for="BaseValue" />
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text">From:</span>
+                        </div>
+                        <select class="form-control" asp-for="SelectedBaseSymbol" asp-items="Html.GetEnumSelectList<CurrencyConverter.Common.Types.CurrencyType>()"></select>
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text">To:</span>
+                        </div>
+                        <select class="form-control" asp-for="SelectedTargetSymbol" asp-items="Html.GetEnumSelectList<CurrencyConverter.Common.Types.CurrencyType>()"></select>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Convert</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr />
+                </div>
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-striped @(Model.SessionConversions == null || !Model.SessionConversions.Any() ? "d-none" : "")">
+                            <thead>
+                                <tr>
+                                    <th>Base Value</th>
+                                    <th>Base Currency</th>
+                                    <th>Exchange Rate</th>
+                                    <th>Converted Value</th>
+                                    <th>Target Currency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.SessionConversions != null)
+                                {
+                                    @foreach (var conversion in Model.SessionConversions)
+                                    {
+                                        <tr>
+                                            <td>@conversion.BaseValue</td>
+                                            <td>@conversion.BaseSymbol</td>
+                                            <td>@conversion.ExchangeRate</td>
+                                            <td>@conversion.ConvertedValue</td>
+                                            <td>@conversion.TargetSymbol</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CurrencyConverter.Business.Entities\CurrencyConverter.Business.Entities.csproj" />
+    <ProjectReference Include="..\CurrencyConverter.Business\CurrencyConverter.Business.csproj" />
+    <ProjectReference Include="..\CurrencyConverter.Mapping\CurrencyConverter.Mapping.csproj" />
+    <ProjectReference Include="..\CurrencyConverter.Models\CurrencyConverter.Models.csproj" />
+  </ItemGroup>
+
+</Project>
