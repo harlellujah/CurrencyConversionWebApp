@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CurrencyConverter.Models.Conversion
+namespace CurrencyConverter.Business.Entities.Conversion
 {
-    public class ConversionModel
+    public class ConversionEntity
     {
-        public ConversionModel()
+        public ConversionEntity()
         {
 
         }

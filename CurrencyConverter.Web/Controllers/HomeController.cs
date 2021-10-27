@@ -25,9 +25,18 @@ namespace CurrencyConverter.Web.Controllers
 
         public IActionResult Index()
         {
-            ConvertCurrencyModel model = new ConvertCurrencyModel();
+            try
+            {
+                ConvertCurrencyModel model = new ConvertCurrencyModel();
+                model.SessionId = Guid.NewGuid();
 
-            return View(model);
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
 
         [HttpPost]

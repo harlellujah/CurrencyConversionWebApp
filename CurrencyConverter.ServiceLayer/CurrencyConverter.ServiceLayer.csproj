@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CurrencyConverter.Business.Entities\CurrencyConverter.Business.Entities.csproj" />
     <ProjectReference Include="..\CurrencyConverter.Business\CurrencyConverter.Business.csproj" />
+    <ProjectReference Include="..\CurrencyConverter.DataAccess\CurrencyConverter.DataAccess.csproj" />
     <ProjectReference Include="..\CurrencyConverter.Mapping\CurrencyConverter.Mapping.csproj" />
     <ProjectReference Include="..\CurrencyConverter.Models\CurrencyConverter.Models.csproj" />
   </ItemGroup>

@@ -13,6 +13,8 @@ namespace CurrencyConverter.Models.Conversion
             SessionConversions = new List<ConversionModel>();
         }
 
+        public Guid SessionId { get; set; }
+
         public CurrencyType SelectedBaseSymbol { get; set; }
 
         public CurrencyType SelectedTargetSymbol { get; set; }

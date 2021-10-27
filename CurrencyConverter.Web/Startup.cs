@@ -1,6 +1,10 @@
 using CurrencyConverter.Business.ApiManagement;
+using CurrencyConverter.Business.Entities.Conversion;
 using CurrencyConverter.Common.AppSettings;
+using CurrencyConverter.DataAccess.Context;
+using CurrencyConverter.DataAccess.Repository;
 using CurrencyConverter.Mapping.Base;
+using CurrencyConverter.Models.Conversion;
 using CurrencyConverter.ServiceLayer.CurrencyManagement;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,14 +34,17 @@ namespace CurrencyConverter.Web
         {
             services.AddControllersWithViews();
 
-            //services.AddDbContextFactory<TapAndStoneContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContextFactory<CurrencyConversionContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddOptions();
             services.Configure<AppSettings>(Configuration);
 
             services.AddTransient<ICurrencyService, CurrencyService>();
             services.AddTransient<IApiService, ApiService>();
+            services.AddTransient<IRepository, SQLRepository>();
+
+            services.AddSingleton<IMapper<ConversionEntity, ConversionModel>, Mapper<ConversionEntity, ConversionModel>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
